@@ -19,6 +19,8 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
@@ -141,6 +143,23 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
             }
         });
 
+        /*val googleSignInAccount = GoogleSignIn.getLastSignedInAccount(act)
+        if (googleSignInAccount != null) {
+            getGoogleSignInClient().signOut()
+        }
+         */
+
+        GoogleSignInAccount val = GoogleSignIn.getLastSignedInAccount(this);
+
+        if (val == null)
+        {
+           Log.e("Error","Koi NAI HAI");
+        }
+        else
+        {
+            startActivity(new Intent(SignUpActivity.this,GoogleProfileActivity.class));
+        }
+
         if (AccessToken.getCurrentAccessToken()== null)
         {
             Log.e("Check ","if part hello world");
@@ -166,6 +185,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     private void gotoProfile(){
+        Log.e("Hello 23","Chalo Chalo chalo Google profile par ");
         Intent intent=new Intent(SignUpActivity.this,GoogleProfileActivity.class);
         counter++;
         startActivity(intent);

@@ -27,10 +27,7 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
-
-     GoogleApiClient googleApiClient;
-     GoogleSignInOptions gso;
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,58 +38,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         int SPLASH_TIME = 3000; //This is 3 seconds
 
-        gso =  new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        /*
-        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-            // signed in. Show the "sign out" button and explanation.
-            // ...
-        } else {
-            // not signed in. Show the "sign in" button and explanation.
-            // ...
-        }
-         */
-
-        googleApiClient=new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-                .build();
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
+                Intent mySuperIntent = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivity(mySuperIntent);
+                Log.i("Information","The Splash Screen is working in this application");
 
-                if (googleApiClient != null)
-                {
-                    Intent mySuperIntent = new Intent(MainActivity.this, GoogleProfileActivity.class);
-                    Log.e("hello", "this is if part if part ");
-                    startActivity(mySuperIntent);
-                    finish();
-                }
-                else
-                {
-                    Intent mySuperIntent = new Intent(MainActivity.this, SignUpActivity.class);
-                    startActivity(mySuperIntent);
-                    Log.e("hello", "else part ");
-                    Log.i("Information","The Splash Screen is working in this application");
-                    Toast.makeText(MainActivity.this, "Value 1", Toast.LENGTH_SHORT).show();
-
-                    finish();
-                }
-
+                finish();
 
             }
         }, SPLASH_TIME );
 
     }
-    
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
 
 }
