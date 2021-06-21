@@ -28,6 +28,7 @@ import com.squareup.picasso.Picasso;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -140,6 +141,20 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
             }
         });
 
+        if (AccessToken.getCurrentAccessToken()== null)
+        {
+            Log.e("Check ","if part hello world");
+        }
+        else
+        {
+            Log.e("Check ","else part hello world");
+            fb_profile_relativeLayout.setVisibility(View.VISIBLE);
+            imageView_logo.setVisibility(View.GONE);
+            google_cardview.setVisibility(View.GONE);
+            fb_tv_card_text.setText("Logout With Facebook");
+            load_user_profile(AccessToken.getCurrentAccessToken());
+        }
+
     }
 
     private void handleSignInResult(GoogleSignInResult result){
@@ -195,6 +210,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
         }
     };
 
+
     private void load_user_profile(AccessToken newAccessToken)
     {
 
@@ -214,9 +230,9 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
                     String user_email = response.getJSONObject().optString("email");
                     user_id = object.optString("id");
 
-                    String fullname = "User Fullname: "+user_firstname+" "+user_lastname;
-                    String final_email_id="User Email ID: "+user_email;
-                    String final_user_id="User ID: "+user_id;
+                    String fullname = user_firstname+" "+user_lastname;
+                    String final_email_id=user_email;
+                    String final_user_id=user_id;
 
                     fb_tv_email_id.setText(final_email_id);
                     fb_tv_username.setText(fullname);

@@ -39,12 +39,21 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         getSupportActionBar().hide();
 
-        int SPLASH_TIME = 1000; //This is 3 seconds
+        int SPLASH_TIME = 3000; //This is 3 seconds
 
         gso =  new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
 
+        /*
+        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+            // signed in. Show the "sign out" button and explanation.
+            // ...
+        } else {
+            // not signed in. Show the "sign in" button and explanation.
+            // ...
+        }
+         */
 
         googleApiClient=new GoogleApiClient.Builder(this)
                 .enableAutoManage(this,this)
@@ -56,9 +65,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             public void run() {
 
 
-                if (googleApiClient.isConnected())
+                if (googleApiClient != null)
                 {
                     Intent mySuperIntent = new Intent(MainActivity.this, GoogleProfileActivity.class);
+                    Log.e("hello", "this is if part if part ");
                     startActivity(mySuperIntent);
                     finish();
                 }
@@ -66,7 +76,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 {
                     Intent mySuperIntent = new Intent(MainActivity.this, SignUpActivity.class);
                     startActivity(mySuperIntent);
+                    Log.e("hello", "else part ");
                     Log.i("Information","The Splash Screen is working in this application");
+                    Toast.makeText(MainActivity.this, "Value 1", Toast.LENGTH_SHORT).show();
 
                     finish();
                 }
