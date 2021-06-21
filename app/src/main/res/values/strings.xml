@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TSF GRIP Task 5</string>
+    <string name="facebook_app_id">826170224704844</string>
+    <string name="fb_login_protocol_scheme">fb826170224704844</string>
+</resources>
