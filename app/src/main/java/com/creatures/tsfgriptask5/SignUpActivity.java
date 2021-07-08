@@ -61,7 +61,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
+        getSupportActionBar().hide();
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
 
@@ -103,7 +103,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
                     @Override
                     public void onSuccess(LoginResult loginResult) {
 
-                        Toast.makeText(SignUpActivity.this, " Successful ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, " Login Successful with facebook", Toast.LENGTH_SHORT).show();
                         fb_profile_relativeLayout.setVisibility(View.VISIBLE);
                         imageView_logo.setVisibility(View.GONE);
                         google_cardview.setVisibility(View.GONE);
@@ -142,12 +142,6 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
                 startActivityForResult(intent,RC_SIGN_IN);
             }
         });
-
-        /*val googleSignInAccount = GoogleSignIn.getLastSignedInAccount(act)
-        if (googleSignInAccount != null) {
-            getGoogleSignInClient().signOut()
-        }
-         */
 
         GoogleSignInAccount val = GoogleSignIn.getLastSignedInAccount(this);
 
@@ -214,7 +208,7 @@ public class SignUpActivity extends AppCompatActivity implements GoogleApiClient
 
             if (currentAccessToken == null)
             {
-                Toast.makeText(SignUpActivity.this, "User Logout", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "User Logout with Facebook", Toast.LENGTH_SHORT).show();
                 fb_profile_relativeLayout.setVisibility(View.GONE);
                 imageView_logo.setVisibility(View.VISIBLE);
                 google_cardview.setVisibility(View.VISIBLE);

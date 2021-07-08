@@ -101,6 +101,7 @@ public class GoogleProfileActivity extends AppCompatActivity implements GoogleAp
             userName.setText(account.getDisplayName());
             userEmail.setText(account.getEmail());
             userId.setText(account.getId());
+            Toast.makeText(this, "Login Successful with Google", Toast.LENGTH_SHORT).show();
             try{
                 //Glide.with(this).load(account.getPhotoUrl()).into(profileImage);
                 //Glide.with(this).load(account.getPhotoUrl()).into(profileImage);
@@ -116,6 +117,7 @@ public class GoogleProfileActivity extends AppCompatActivity implements GoogleAp
     }
 
     private void gotoMainActivity(){
+        Toast.makeText(this, "Logout Successful with Google", Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(this,SignUpActivity.class);
         startActivity(intent);
     }

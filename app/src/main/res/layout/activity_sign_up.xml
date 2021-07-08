@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".SignUpActivity">
 
     <RelativeLayout
@@ -215,12 +216,12 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_150sdp"
-        android:src="@drawable/tsf_logo"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_250sdp"
+        android:src="@drawable/login"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:id="@+id/logo_image_view"
-        android:layout_marginTop="@dimen/_100sdp"/>
+        android:layout_marginTop="@dimen/_50sdp"/>
 
 </RelativeLayout>
